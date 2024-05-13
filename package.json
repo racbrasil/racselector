@@ -1,0 +1,22 @@
+{
+  "name": "fluido_select",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./js/backend/index.js",
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
+  "author": "Lucas Freires",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "node": "^20.4.0",
+    "nodemon": "^2.0.22",
+    "path": "^0.12.7",
+    "serve-favicon": "^2.5.0"
+  },
+  "devDependencies": {
+    "fetch-mock": "^9.11.0"
+  }
+}

@@ -1,0 +1,1572 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAC Selector</title>
+
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+    <link rel="icon" href="/favicon.png" type="image/png">
+
+    <script src="https://kit.fontawesome.com/b7b2a7db6a.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body class="corpo">
+
+    <header class="cabecalho">
+
+        <div class="cabecalho__conteudo">
+
+            <img src="../docs/racbrasil_logo.png" class="cabecalho__imagem">
+            <h1 class="cabecalho__titulo">RAC Selector - Seleção de componentes de equipamentos de refrigeração</h1>
+
+        </div>
+
+    </header>
+
+    <main class="principal">
+
+        <div class="principal__conteudo">
+
+            <nav class="principal__selecao">
+
+                <a href="#" id="oilButton" class="principal__selecao__links selected"> Oil Pack</a>
+                <a href="#" id="reguladorButton" class="principal__selecao__links"> Reg. Eletrônico de Óleo</a>
+                <a href="#" id="tanqueButton" class="principal__selecao__links"> Tanque de Líquido</a>
+                <a href="#" id="valvulaButton" class="principal__selecao__links"> Válvula de Expansão
+                    Eletrônica</a>
+                <a href="#" id="ventiladorButton" class="principal__selecao__links"> Ventilador de Cabeçote</a>
+
+            </nav>
+
+            <nav class="principal__botoes">
+
+                <button type="submit" class="botoes__botao botao__calcular" id="botao-formulario-vee"
+                    form="formulario-vee" style="display: none;">Calcular</button>
+                <button type="submit" class="botoes__botao botao__calcular" id="botao-formulario-oil"
+                    form="formulario-oil">Calcular</button>
+                <button type="submit" class="botoes__botao botao__calcular" id="botao-formulario-tanque"
+                    form="formulario-tanque" style="display: none;">Calcular</button>
+                <button type="submit" class="botoes__botao botao__calcular" id="botao-formulario-vent"
+                    form="formulario-ventilador" style="display: none;">Selecionar</button>
+                <button type="submit" class="botoes__botao botao__calcular" id="botao-formulario-regulador"
+                    form="formulario-regulador" style="display: none;">Selecionar</button>
+
+                <a class="botoes__botao botao__documento" style="display: none;" id="botao-doc-vee"
+                    href="../docs/catalogoValvulaExpansaoEletronica.ad24fdad.pdf" target="_blank">Documentação</a>
+
+                <a class="botoes__botao botao__documento" id="botao-doc-oil" href="../docs/OILPACK-Rac Brasil.pdf"
+                    target="_blank">Documentação</a>
+
+                <a class="botoes__botao botao__documento" style="display: none;" id="botao-doc-tanque"
+                    href="../docs/tanqueLiquido.3612f484.pdf" target="_blank">Documentação</a>
+
+                <a class="botoes__botao botao__documento" style="display: none;" id="botao-doc-vent"
+                    href="../docs/Catálogo Ventiladores - RAC Brasil.pdf" target="_blank">Documentação</a>
+
+                <a class="botoes__botao botao__documento" style="display: none;" id="botao-doc-regulador"
+                    href="../docs/Regulador de Oleo.pdf" target="_blank">Documentação</a>
+
+                <a class="botoes__botao botao__ajuda" style="display: none;" id="botao-ajuda-vee"
+                    href="../docs/RAC Selector - Ajuda Valvula de Expansão Eletrônica - v2.pdf"
+                    target="_blank">Ajuda</a>
+
+                <a class="botoes__botao botao__ajuda" id="botao-ajuda-oil"
+                    href="../docs/RAC Selector - Ajuda OilPack - v2.pdf" target="_blank">Ajuda</a>
+
+                <a class="botoes__botao botao__ajuda" style="display: none;" id="botao-ajuda-tanque"
+                    href="../docs/RAC Selector - Ajuda Tanque de Liquido - v1.pdf" target="_blank">Ajuda</a>
+
+                <a class="botoes__botao botao__ajuda" style="display: none;" id="botao-ajuda-vent"
+                    href="../docs/RAC Selector - Ajuda Ventilador Cabecote - v1.pdf" target="_blank">Ajuda</a>
+
+                <a class="botoes__botao botao__ajuda" style="display: none;" id="botao-ajuda-regulador"
+                    href="../docs/RAC Selector - Ajuda Reg Eletr Nivel de Oleo - v1.pdf" target="_blank">Ajuda</a>
+
+                <button class="botoes__botao botao__circuito" id="circuitoButton"
+                    style="display: none;">Circuito</button>
+
+            </nav>
+
+            <section class="principal__form">
+
+                <form action="" class="form__conteudo" id="formulario-vee" style="display: none;">
+
+                    <section class="form__secao__esquerda" id="section-vee">
+
+                        <h2 class="form__titulo">Parâmetros do equipamento:</h2>
+
+                        <div class="form__secao" id="secao__capacidade">
+
+                            <span></span>
+
+                            <label for="" class="secao__descricao">Capacidade de Refrigeração:</label>
+
+                            <div class="secao__input">
+
+                                <input type="text" class="form__input" id="capacidade">
+                                <p class="form__input__icon">kW</p>
+
+                            </div>
+
+                        </div>
+
+                        <div class="form__secao" id="secao__refrigerante">
+
+                            <span></span>
+
+                            <label for="" class="secao__descricao">Refrigerante:</label>
+
+                            <select name="" id="refrigerante" class="form__select active">
+
+                                <!--<option value="" selected class="select__option"></option>-->
+                                <option value="R404A" class="select__option">R404A</option>
+                                <option value="R410A" class="select__option">R410A</option>
+                                <option value="R407C" class="select__option">R407C</option>
+                                <option value="R22" class="select__option">R22</option>
+                                <option value="R134A" class="select__option">R134A</option>
+                                <option value="R744" class="select__option">R744</option>
+                                <option value="R507A" class="select__option">R507A</option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="form__secao" id="secao__valvula">
+
+                            <span></span>
+
+                            <label for="" class="secao__descricao">Tipo de válvula:</label>
+
+                            <select name="" id="selectTipoValvula" class="form__select active">
+
+                                <option value="Auto" selected class="select__option">Auto</option>
+                                <option value="ESV" class="select__option">Passo</option>
+                                <option value="EPV" class="select__option">Pulso</option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="form__secao" id="secao__tEvap">
+
+                            <span></span>
+
+                            <label for="" class="secao__descricao">Temperatura de Evaporação:</label>
+
+                            <div class="secao__input">
+
+                                <input type="text" class="form__input" id="tEvap">
+                                <p class="form__input__icon">ºC</p>
+
+                            </div>
+
+                        </div>
+
+                        <div class="form__secao" id="secao__super">
+
+                            <span></span>
+
+                            <label for="" class="secao__descricao">Superaquecimento Útil:</label>
+
+                            <div class="secao__input">
+
+                                <input type="text" class="form__input" id="super" value="6">
+                                <p class="form__input__icon">K</p>
+
+                            </div>
+
+                        </div>
+
+                        <div class="form__secao" id="secao__tCond">
+
+                            <span></span>
+
+                            <label for="" class="secao__descricao">Temperatura de Condensação:</label>
+
+                            <div class="secao__input">
+
+                                <input type="text" class="form__input" id="tCond" value="45">
+                                <p class="form__input__icon">ºC</p>
+
+                            </div>
+
+                        </div>
+
+                        <div class="form__secao" id="secao__subres">
+
+                            <span></span>
+
+                            <label for="" class="secao__descricao">Subresfriamento:</label>
+
+                            <div class="secao__input">
+
+                                <input type="text" class="form__input" id="subres" value="3">
+                                <p class="form__input__icon">K</p>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                </form>
+
+                <form action="" class="form__conteudo" id="formulario-oil">
+
+                    <div class="form__qtdeRegimes">
+                        <h3 class="qtdeRegimes__titulo">Quantidade de regimes:</h3>
+
+                        <div class="qtdeRegimes__inputs">
+                            <input type="radio" value="1" id="radio1" checked>
+                            <label for="radio1">1</label>
+                            <input type="radio" id="radio2" value="2">
+                            <label for="radio2">2</label>
+                        </div>
+
+                    </div>
+
+                    <section class="form__secao__esquerda" id="section-oil">
+
+                        <h2 class="form__titulo">Parâmetros do equipamento (Seleção 1):</h2>
+
+                        <div class="form__secao" id="secao__refrigerante">
+
+                            <span></span>
+
+                            <label for="" class="secao__descricao">Refrigerante: </label>
+
+                            <select name="" id="refrigerante" class="form__select active">
+
+                                <!--<option value="" selected class="select__option"></option>-->
+                                <option value="R404A" class="select__option">R404A</option>
+                                <!--<option value="R410A" class="select__option">R410A</option>-->
+                                <!--<option value="R407C" class="select__option">R407C</option>-->
+                                <option value="R22" class="select__option">R22</option>
+                                <option value="R134A" class="select__option">R134A</option>
+                                <!--<option value="R744" class="select__option">R744</option>-->
+                                <!--<option value="R507A" class="select__option">R507A</option>-->
+
+                            </select>
+
+                        </div>
+
+                        <div class="form__secao" id="secao__tEvap">
+
+                            <span></span>
+
+                            <label for="" class="secao__descricao">Temperatura de Evaporação:</label>
+
+                            <div class="secao__input">
+
+                                <input type="text" class="form__input" id="tEvap">
+                                <p class="form__input__icon">ºC</p>
+
+                            </div>
+
+                        </div>
+
+                        <div class="form__secao" id="secao__tCond">
+
+                            <span></span>
+
+                            <label for="" class="secao__descricao">Temperatura de Condensação: </label>
+
+                            <div class="secao__input">
+
+                                <input type="text" class="form__input" id="tCond" value="45">
+                                <p class="form__input__icon">ºC</p>
+
+                            </div>
+
+                        </div>
+
+                        <div class="form__secao" id="secao__qtdeCompressores">
+
+                            <span></span>
+
+                            <label for="" class="secao__descricao">Quantidade de Compressores: </label>
+
+                            <select name="" id="qtdeCompressores" class="form__select active">
+
+                                <option value="1" class="select__option">1</option>
+                                <option value="2" class="select__option">2</option>
+                                <option value="3" class="select__option">3</option>
+                                <option value="4" class="select__option">4</option>
+                                <option value="5" class="select__option">5</option>
+                                <option value="6" class="select__option">6</option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="form__secao" id="secao__massaCompressor">
+
+                            <span></span>
+
+                            <label for="" class="secao__descricao">Vazão em Massa por Compressor: </label>
+
+                            <div class="secao__input">
+
+                                <input type="text" class="form__input" id="massaCompressor" value="244">
+                                <p class="form__input__icon">Kg/h</p>
+
+                            </div>
+
+                        </div>
+
+                        <div class="form__secao" id="secao__tDescarga">
+
+                            <span></span>
+
+                            <label for="" class="secao__descricao">Temperatura de Descarga não resfriada (de 60°C a
+                                120°C): </label>
+
+                            <div class="secao__input">
+
+                                <input type="text" class="form__input" id="tDescarga" value="90">
+                                <p class="form__input__icon">ºC</p>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                    <section class="form__secao__direita" id="section-oil" style="display: none;">
+
+                        <h2 class="form__titulo">Parâmetros do equipamento (Seleção 2):</h2>
+
+                        <!--<div class="form__secao" id="secao__refrigerante">
+
+                            <span></span>
+
+                            <label for="" class="secao__descricao">Refrigerante: </label>
+
+                            <select name="" id="refrigerante" class="form__select active" disabled>
+
+                                <option value="" selected class="select__option"></option>
+                                <option value="R404A" class="select__option">R404A</option>
+                                <option value="R410A" class="select__option">R410A</option>
+                                <option value="R407C" class="select__option">R407C</option>
+                                <option value="R22" class="select__option">R22</option>
+                                <option value="R134A" class="select__option">R134A</option>
+                                <option value="R744" class="select__option">R744</option>
+                                <<option value="R507A" class="select__option">R507A</option>
+
+                            </select>
+
+                        </div>-->
+
+                        <div class="form__secao" id="secao__tEvap">
+
+                            <span></span>
+
+                            <label for="" class="secao__descricao">Temperatura de Evaporação:</label>
+
+                            <div class="secao__input">
+
+                                <input type="text" class="form__input" id="tEvap">
+                                <p class="form__input__icon">ºC</p>
+
+                            </div>
+
+                        </div>
+
+                        <div class="form__secao" id="secao__tCond">
+
+                            <span></span>
+
+                            <label for="" class="secao__descricao">Temperatura de Condensação: </label>
+
+                            <div class="secao__input">
+
+                                <input type="text" class="form__input" id="tCond" readonly value="45">
+                                <p class="form__input__icon">ºC</p>
+
+                            </div>
+
+                        </div>
+
+                        <div class="form__secao" id="secao__qtdeCompressores">
+
+                            <span></span>
+
+                            <label for="" class="secao__descricao">Quantidade de Compressores: </label>
+
+                            <select name="" id="qtdeCompressores" class="form__select active">
+
+                                <option value="1" class="select__option">1</option>
+                                <option value="2" class="select__option">2</option>
+                                <option value="3" class="select__option">3</option>
+                                <option value="4" class="select__option">4</option>
+                                <option value="5" class="select__option">5</option>
+                                <option value="6" class="select__option">6</option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="form__secao" id="secao__massaCompressor">
+
+                            <span></span>
+
+                            <label for="" class="secao__descricao">Vazão em Massa por Compressor: </label>
+
+                            <div class="secao__input">
+
+                                <input type="text" class="form__input" id="massaCompressor" value="244">
+                                <p class="form__input__icon">Kg/h</p>
+
+                            </div>
+
+                        </div>
+
+                        <div class="form__secao" id="secao__tDescarga">
+
+                            <span></span>
+
+                            <label for="" class="secao__descricao">Temperatura de Descarga não resfriada (de 60°C a
+                                120°C): </label>
+
+                            <div class="secao__input">
+
+                                <input type="text" class="form__input" id="tDescarga" value="90">
+                                <p class="form__input__icon">ºC</p>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                </form>
+
+                <form action="" class="form__conteudo" id="formulario-tanque" style="display: none;">
+
+                    <section class="form__secao__esquerda" id="section-tanque">
+
+                        <h2 class="form__titulo">Parâmetros do equipamento:</h2>
+
+                        <!--<div class="form__secao" id="secao__capacidade">
+
+                            <span></span>
+
+                            <label for="" class="secao__descricao">Capacidade de Refrigeração:</label>
+
+                            <div class="secao__input">
+
+                                <input type="text" class="form__input" id="capacidade">
+                                <p class="form__input__icon">kW</p>
+
+                            </div>
+
+                        </div>-->
+
+                        <div class="form__secao" id="secao__refrigerante">
+
+                            <span></span>
+
+                            <label for="" class="secao__descricao">Refrigerante:</label>
+
+                            <select name="" id="refrigerante" class="form__select active">
+
+                                <!--<option value="" selected class="select__option"></option>-->
+                                <option value="R404A" class="select__option">R404A</option>
+                                <!--<option value="R410A" class="select__option">R410A</option>-->
+                                <option value="R407C" class="select__option">R407C</option>
+                                <option value="R22" class="select__option">R22</option>
+                                <option value="R134A" class="select__option">R134A</option>
+                                <!--<option value="R744" class="select__option">R744</option>-->
+                                <option value="R507A" class="select__option">R507A</option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="form__secao" id="secao__tEvap">
+
+                            <span></span>
+
+                            <label for="" class="secao__descricao">Temperatura de Evaporação:</label>
+
+                            <div class="secao__input">
+
+                                <input type="text" class="form__input" id="tEvap">
+                                <p class="form__input__icon">ºC</p>
+
+                            </div>
+
+                        </div>
+
+                        <div class="form__secao" id="secao__super">
+
+                            <span></span>
+
+                            <label for="" class="secao__descricao">Superaquecimento Útil:</label>
+
+                            <div class="secao__input">
+
+                                <input type="text" class="form__input" id="super" value="6">
+                                <p class="form__input__icon">K</p>
+
+                            </div>
+
+                        </div>
+
+                        <div class="form__secao" id="secao__tCond">
+
+                            <span></span>
+
+                            <label for="" class="secao__descricao">Temperatura de Condensação:</label>
+
+                            <div class="secao__input">
+
+                                <input type="text" class="form__input" id="tCond" value="45">
+                                <p class="form__input__icon">ºC</p>
+
+                            </div>
+
+                        </div>
+
+                        <div class="form__secao" id="secao__subres">
+
+                            <span></span>
+
+                            <label for="" class="secao__descricao">Subresfriamento:</label>
+
+                            <div class="secao__input">
+
+                                <input type="text" class="form__input" id="subres" value="3">
+                                <p class="form__input__icon">K</p>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                    <section class="form__secao__direita__tanque" id="section-tanque">
+
+                        <div class="tanque__frame tanque__frame--evap">
+                            <h3 class="form__titulo">Evaporador:</h3>
+
+                            <div class="form__secao__frame" id="secao__evap">
+
+                                <span></span>
+
+                                <label for="" class="secao__descricao">Volume:</label>
+
+                                <div class="secao__input">
+
+                                    <input type="text" class="form__input" id="evap__volume">
+                                    <p class="form__input__icon">L</p>
+
+                                </div>
+
+                            </div>
+
+                            <div class="form__secao__select" id="secao__refrigerante">
+
+                                <span></span>
+
+                                <select name="" id="refrigerante" class="form__select active">
+
+                                    <!--<option value="" selected class="select__option"></option>-->
+                                    <option value="Ar" class="select__option">Ar</option>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+                        <div class="tanque__frame tanque__frame--cond">
+                            <h3 class="form__titulo">Condensador:</h3>
+
+                            <div class="form__secao__frame" id="secao__cond">
+
+                                <span></span>
+
+                                <label for="" class="secao__descricao">Volume:</label>
+
+                                <div class="secao__input">
+
+                                    <input type="text" class="form__input" id="cond__volume">
+                                    <p class="form__input__icon">L</p>
+
+                                </div>
+
+                            </div>
+
+                            <div class="form__secao__select" id="secao__refrigerante">
+
+                                <span></span>
+
+                                <select name="" id="refrigerante" class="form__select active">
+
+                                    <!--<option value="" selected class="select__option"></option>-->
+                                    <option value="Ar" class="select__option">Ar</option>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+                        <div class="tanque__frame__maior">
+                            <h3 class="form__titulo">Tubulação de Sucção:</h3>
+
+                            <div class="frame__maior__infos">
+
+                                <div class="form__secao__frame" id="secao__comp__suc">
+
+                                    <span></span>
+
+                                    <label for="" class="secao__descricao">Comprimento:</label>
+
+                                    <div class="secao__input">
+
+                                        <input type="text" class="form__input" id="comprimento__suc">
+                                        <p class="form__input__icon">m</p>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="form__secao__frame" id="secao__diam__suc">
+
+                                    <span></span>
+
+                                    <label for="" class="secao__descricao">Diâmetro:</label>
+
+                                    <div class="secao__input">
+
+                                        <input type="text" class="form__input" id="diametro__suc">
+                                        <p class="form__input__icon">mm</p>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="tanque__frame__maior">
+                            <h3 class="form__titulo">Tubulação Linha de Líquido:</h3>
+
+                            <div class="frame__maior__infos">
+
+                                <div class="form__secao__frame" id="secao__comp__liq">
+
+                                    <span></span>
+
+                                    <label for="" class="secao__descricao">Comprimento:</label>
+
+                                    <div class="secao__input">
+
+                                        <input type="text" class="form__input" id="comprimento__linhaliquido">
+                                        <p class="form__input__icon">m</p>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="form__secao__frame" id="secao__diam__liq">
+
+                                    <span></span>
+
+                                    <label for="" class="secao__descricao">Diâmetro:</label>
+
+                                    <div class="secao__input">
+
+                                        <input type="text" class="form__input" id="diametro__linhaliquido">
+                                        <p class="form__input__icon">mm</p>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="tanque__frame__maior">
+                            <h3 class="form__titulo">Tubulação Linha Descarga:</h3>
+
+                            <div class="frame__maior__infos">
+                                <div class="form__secao__frame" id="secao__comp__desc">
+
+                                    <span></span>
+
+                                    <label for="" class="secao__descricao">Comprimento:</label>
+
+                                    <div class="secao__input">
+
+                                        <input type="text" class="form__input" id="comprimento__desc">
+                                        <p class="form__input__icon">m</p>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="form__secao__frame" id="secao__diam__desc">
+
+                                    <span></span>
+
+                                    <label for="" class="secao__descricao">Diâmetro:</label>
+
+                                    <div class="secao__input">
+
+                                        <input type="text" class="form__input" id="diametro__desc">
+                                        <p class="form__input__icon">mm</p>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                    <section class="form__secao__abaixo__tanque" id="section-tanque">
+
+                        <div class="tanque__frame tanque__frame--param">
+
+                            <h3 class="form__titulo">Parâmetros</h3>
+
+                            <div class="frame__maior__infos">
+
+                                <div class="tanque__frame tanque__frame--param">
+                                    <h3 class="form__titulo">Tipo:</h3>
+                                    <div class="qtdeRegimes__inputs">
+                                        <input type="radio" value="Vertical" id="radioVertical" checked>
+                                        <label for="radioVertical">Vertical</label>
+                                        <!--<input type="radio" id="radioHorizontal" value="Horizontal">
+                                        <label for="radioHorizontal">Horizontal</label>!-->
+                                    </div>
+                                </div>
+
+                                <div class="tanque__frame tanque__frame--param">
+                                    <h3 class="form__titulo">Localização:</h3>
+                                    <div class="qtdeRegimes__inputs">
+                                        <input type="radio" value="1" id="radioInterior" checked>
+                                        <label for="radioInterior">Interior</label>
+                                    </div>
+                                </div>
+
+                                <div class="form__secao" id="secao__minEnc">
+
+                                    <span></span>
+
+                                    <label for="" class="secao__descricao">Enchimento Residual:</label>
+
+                                    <div class="secao__input">
+
+                                        <input type="text" class="form__input" id="minEnc" value="15">
+                                        <p class="form__input__icon">%</p>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                </form>
+
+                <form action="" class="form__conteudo" id="formulario-ventilador" style="display: none;">
+
+                    <section class="form__secao__ventilador" id="section-tanque">
+
+                        <h2 class="form__titulo">Parâmetros do compressor:</h2>
+
+                        <div class="form__secao" id="secao__fabricante">
+
+                            <span></span>
+
+                            <label for="" class="secao__descricao">Fabricante:</label>
+
+                            <select name="" id="fabricante" class="form__select active">
+
+                                <option value="Bitzer" selected class="select__option">Bitzer</option>
+                            </select>
+
+                        </div>
+
+                        <div class="form__secao" id="secao__compressor">
+
+                            <span></span>
+
+                            <label for="" class="secao__descricao">Modelo:</label>
+
+                            <select name="" id="compressor" class="form__select active">
+                                <option value="2CC-3.2" class="select__option">2CC-3.2</option>
+                                <option value="2CC-4.2" class="select__option">2CC-4.2</option>
+                                <option value="2CES-3" class="select__option">2CES-3</option>
+                                <option value="2CES-4" class="select__option">2CES-4</option>
+                                <option value="2DC-2.2" class="select__option">2DC-2.2</option>
+                                <option value="2DC-3.2" class="select__option">2DC-3.2</option>
+                                <option value="2DES-3" class="select__option">2DES-3</option>
+                                <option value="2EC-2.2" class="select__option">2EC-2.2</option>
+                                <option value="2EC-3.2" class="select__option">2EC-3.2</option>
+                                <option value="2EES-2" class="select__option">2EES-2</option>
+                                <option value="2EES-3" class="select__option">2EES-3</option>
+                                <option value="2FC-2.2" class="select__option">2FC-2.2</option>
+                                <option value="2FC-3.2" class="select__option">2FC-3.2</option>
+                                <option value="2FES-2" class="select__option">2FES-2</option>
+                                <option value="2FES-3" class="select__option">2FES-3</option>
+                                <option value="2GC-2.2" class="select__option">2GC-2.2</option>
+                                <option value="2GES-2" class="select__option">2GES-2</option>
+                                <option value="2HC-1.2" class="select__option">2HC-1.2</option>
+                                <option value="2HC-2.2" class="select__option">2HC-2.2</option>
+                                <option value="2HES-1" class="select__option">2HES-1</option>
+                                <option value="2HES-2" class="select__option">2HES-2</option>
+                                <option value="2JC-07.2" class="select__option">2JC-07.2</option>
+                                <option value="2JES-07" class="select__option">2JES-07</option>
+                                <option value="2KC-05.2" class="select__option">2KC-05.2</option>
+                                <option value="2KES-05" selected class="select__option">2KES-05</option>
+                                <option value="4CC-6.2" class="select__option">4CC-6.2</option>
+                                <option value="4CC-9.2" class="select__option">4CC-9.2</option>
+                                <option value="4CES-6" class="select__option">4CES-6</option>
+                                <option value="4CES-9" class="select__option">4CES-9</option>
+                                <option value="4DC-5.2" class="select__option">4DC-5.2</option>
+                                <option value="4DC-7.2" class="select__option">4DC-7.2</option>
+                                <option value="4DES-5" class="select__option">4DES-5</option>
+                                <option value="4DES-7" class="select__option">4DES-7</option>
+                                <option value="4EC-4.2" class="select__option">4EC-4.2</option>
+                                <option value="4EC-6.2" class="select__option">4EC-6.2</option>
+                                <option value="4EES-4" class="select__option">4EES-4</option>
+                                <option value="4EES-6" class="select__option">4EES-6</option>
+                                <option value="4FC-3.2" class="select__option">4FC-3.2</option>
+                                <option value="4FC-5.2" class="select__option">4FC-5.2</option>
+                                <option value="4FES-3" class="select__option">4FES-3</option>
+                                <option value="4FES-5" class="select__option">4FES-5</option>
+                                <option value="4G-20.2" class="select__option">4G-20.2</option>
+                                <option value="4G-30.2" class="select__option">4G-30.2</option>
+                                <option value="4GE-20" class="select__option">4GE-20</option>
+                                <option value="4GE-23" class="select__option">4GE-23</option>
+                                <option value="4GE-30" class="select__option">4GE-30</option>
+                                <option value="4FE-25" class="select__option">4FE-25</option>
+                                <option value="4FE-28" class="select__option">4FE-28</option>
+                                <option value="4FE-35" class="select__option">4FE-35</option>
+                                <option value="4H-15.2" class="select__option">4H-15.2</option>
+                                <option value="4H-25.2" class="select__option">4H-25.2</option>
+                                <option value="4HE-15" class="select__option">4HE-15</option>
+                                <option value="4HE-18" class="select__option">4HE-18</option>
+                                <option value="4HE-25" class="select__option">4HE-25</option>
+                                <option value="4J-13.2" class="select__option">4J-13.2</option>
+                                <option value="4J-22.2" class="select__option">4J-22.2</option>
+                                <option value="4JE-13" class="select__option">4JE-13</option>
+                                <option value="4JE-15" class="select__option">4JE-15</option>
+                                <option value="4JE-22" class="select__option">4JE-22</option>
+                                <option value="4NCS-12.2" class="select__option">4NCS-12.2</option>
+                                <option value="4NCS-20.2" class="select__option">4NCS-20.2</option>
+                                <option value="4NES-12" class="select__option">4NES-12</option>
+                                <option value="4NES-14" class="select__option">4NES-14</option>
+                                <option value="4NES-20" class="select__option">4NES-20</option>
+                                <option value="4PCS-10.2" class="select__option">4PCS-10.2</option>
+                                <option value="4PCS-15.2" class="select__option">4PCS-15.2</option>
+                                <option value="4PES-10" class="select__option">4PES-10</option>
+                                <option value="4PES-12" class="select__option">4PES-12</option>
+                                <option value="4PES-15" class="select__option">4PES-15</option>
+                                <option value="4TCS-8.2" class="select__option">4TCS-8.2</option>
+                                <option value="4TCS-12.2" class="select__option">4TCS-12.2</option>
+                                <option value="4TES-8" class="select__option">4TES-8</option>
+                                <option value="4TES-9" class="select__option">4TES-9</option>
+                                <option value="4TES-12" class="select__option">4TES-12</option>
+                                <option value="4VCS-6.2" class="select__option">4VCS-6.2</option>
+                                <option value="4VCS-10.2" class="select__option">4VCS-10.2</option>
+                                <option value="4VES-6" class="select__option">4VES-6</option>
+                                <option value="4VES-7" class="select__option">4VES-7</option>
+                                <option value="4VES-10" class="select__option">4VES-10</option>
+                                <option value="6F-40.2" class="select__option">6F-40.2</option>
+                                <option value="6F-50.2" class="select__option">6F-50.2</option>
+                                <option value="6FE-40" class="select__option">6FE-40</option>
+                                <option value="6FE-44" class="select__option">6FE-44</option>
+                                <option value="6FE-50" class="select__option">6FE-50</option>
+                                <option value="6G-30.2" class="select__option">6G-30.2</option>
+                                <option value="6G-40.2" class="select__option">6G-40.2</option>
+                                <option value="6GE-30" class="select__option">6GE-30</option>
+                                <option value="6GE-34" class="select__option">6GE-34</option>
+                                <option value="6GE-40" class="select__option">6GE-40</option>
+                                <option value="6H-25.2" class="select__option">6H-25.2</option>
+                                <option value="6H-35.2" class="select__option">6H-35.2</option>
+                                <option value="6HE-25" class="select__option">6HE-25</option>
+                                <option value="6HE-28" class="select__option">6HE-28</option>
+                                <option value="6HE-35" class="select__option">6HE-35</option>
+                                <option value="6J-22.2" class="select__option">6J-22.2</option>
+                                <option value="6J-33.2" class="select__option">6J-33.2</option>
+                                <option value="6JE-22" class="select__option">6JE-22</option>
+                                <option value="6JE-25" class="select__option">6JE-25</option>
+                                <option value="6JE-33" class="select__option">6JE-33</option>
+                                <option value="8FC-60.2" class="select__option">8FC-60.2</option>
+                                <option value="8FC-70.2" class="select__option">8FC-70.2</option>
+                                <option value="8FE-60" class="select__option">8FE-60</option>
+                                <option value="8FE-70" class="select__option">8FE-70</option>
+                                <option value="8GC-50.2" class="select__option">8GC-50.2</option>
+                                <option value="8GC-60.2" class="select__option">8GC-60.2</option>
+                                <option value="8GE-50" class="select__option">8GE-50</option>
+                                <option value="8GE-60" class="select__option">8GE-60</option>
+                            </select>
+
+                        </div>
+
+                    </section>
+
+                </form>
+
+                <form action="" class="form__conteudo" id="formulario-regulador" style="display: none;">
+
+                    <section class="form__secao__ventilador" id="section-tanque">
+
+                        <h2 class="form__titulo">Parâmetros do compressor:</h2>
+
+                        <div class="form__secao" id="secao__fabricante">
+
+                            <span></span>
+
+                            <label for="" class="secao__descricao">Fabricante:</label>
+
+                            <select name="" id="fabricante" class="form__select active">
+
+                                <option value="Bitzer" selected class="select__option">Bitzer</option>
+                            </select>
+
+                        </div>
+
+                        <div class="form__secao" id="secao__compressor">
+
+                            <span></span>
+
+                            <label for="" class="secao__descricao">Modelo:</label>
+
+                            <select name="" id="compressor" class="form__select active">
+
+                                <option value="2CC-3.2" class="select__option">2CC-3.2</option>
+                                <option value="2CC-4.2" class="select__option">2CC-4.2</option>
+                                <option value="2CES-3" class="select__option">2CES-3</option>
+                                <option value="2CES-4" class="select__option">2CES-4</option>
+                                <option value="2DC-2.2" class="select__option">2DC-2.2</option>
+                                <option value="2DC-3.2" class="select__option">2DC-3.2</option>
+                                <option value="2DES-3" class="select__option">2DES-3</option>
+                                <option value="2EC-2.2" class="select__option">2EC-2.2</option>
+                                <option value="2EC-3.2" class="select__option">2EC-3.2</option>
+                                <option value="2EES-2" class="select__option">2EES-2</option>
+                                <option value="2EES-3" class="select__option">2EES-3</option>
+                                <option value="2FC-2.2" class="select__option">2FC-2.2</option>
+                                <option value="2FC-3.2" class="select__option">2FC-3.2</option>
+                                <option value="2FES-2" class="select__option">2FES-2</option>
+                                <option value="2FES-3" class="select__option">2FES-3</option>
+                                <option value="2GC-2.2" class="select__option">2GC-2.2</option>
+                                <option value="2GES-2" class="select__option">2GES-2</option>
+                                <option value="2HC-1.2" class="select__option">2HC-1.2</option>
+                                <option value="2HC-2.2" class="select__option">2HC-2.2</option>
+                                <option value="2HES-1" class="select__option">2HES-1</option>
+                                <option value="2HES-2" class="select__option">2HES-2</option>
+                                <option value="2JC-07.2" class="select__option">2JC-07.2</option>
+                                <option value="2JES-07" class="select__option">2JES-07</option>
+                                <option value="2KC-05.2" class="select__option">2KC-05.2</option>
+                                <option value="2KES-05" selected class="select__option">2KES-05</option>
+                                <option value="4CC-6.2" class="select__option">4CC-6.2</option>
+                                <option value="4CC-9.2" class="select__option">4CC-9.2</option>
+                                <option value="4CES-6" class="select__option">4CES-6</option>
+                                <option value="4CES-9" class="select__option">4CES-9</option>
+                                <option value="4DC-5.2" class="select__option">4DC-5.2</option>
+                                <option value="4DC-7.2" class="select__option">4DC-7.2</option>
+                                <option value="4DES-5" class="select__option">4DES-5</option>
+                                <option value="4DES-7" class="select__option">4DES-7</option>
+                                <option value="4EC-4.2" class="select__option">4EC-4.2</option>
+                                <option value="4EC-6.2" class="select__option">4EC-6.2</option>
+                                <option value="4EES-4" class="select__option">4EES-4</option>
+                                <option value="4EES-6" class="select__option">4EES-6</option>
+                                <option value="4FC-3.2" class="select__option">4FC-3.2</option>
+                                <option value="4FC-5.2" class="select__option">4FC-5.2</option>
+                                <option value="4FES-3" class="select__option">4FES-3</option>
+                                <option value="4FES-5" class="select__option">4FES-5</option>
+                                <option value="4G-20.2" class="select__option">4G-20.2</option>
+                                <option value="4G-30.2" class="select__option">4G-30.2</option>
+                                <option value="4GE-20" class="select__option">4GE-20</option>
+                                <option value="4GE-23" class="select__option">4GE-23</option>
+                                <option value="4GE-30" class="select__option">4GE-30</option>
+                                <option value="4FE-25" class="select__option">4FE-25</option>
+                                <option value="4FE-28" class="select__option">4FE-28</option>
+                                <option value="4FE-35" class="select__option">4FE-35</option>
+                                <option value="4H-15.2" class="select__option">4H-15.2</option>
+                                <option value="4H-25.2" class="select__option">4H-25.2</option>
+                                <option value="4HE-15" class="select__option">4HE-15</option>
+                                <option value="4HE-18" class="select__option">4HE-18</option>
+                                <option value="4HE-25" class="select__option">4HE-25</option>
+                                <option value="4J-13.2" class="select__option">4J-13.2</option>
+                                <option value="4J-22.2" class="select__option">4J-22.2</option>
+                                <option value="4JE-13" class="select__option">4JE-13</option>
+                                <option value="4JE-15" class="select__option">4JE-15</option>
+                                <option value="4JE-22" class="select__option">4JE-22</option>
+                                <option value="4NCS-12.2" class="select__option">4NCS-12.2</option>
+                                <option value="4NCS-20.2" class="select__option">4NCS-20.2</option>
+                                <option value="4NES-12" class="select__option">4NES-12</option>
+                                <option value="4NES-14" class="select__option">4NES-14</option>
+                                <option value="4NES-20" class="select__option">4NES-20</option>
+                                <option value="4PCS-10.2" class="select__option">4PCS-10.2</option>
+                                <option value="4PCS-15.2" class="select__option">4PCS-15.2</option>
+                                <option value="4PES-10" class="select__option">4PES-10</option>
+                                <option value="4PES-12" class="select__option">4PES-12</option>
+                                <option value="4PES-15" class="select__option">4PES-15</option>
+                                <option value="4TCS-8.2" class="select__option">4TCS-8.2</option>
+                                <option value="4TCS-12.2" class="select__option">4TCS-12.2</option>
+                                <option value="4TES-8" class="select__option">4TES-8</option>
+                                <option value="4TES-9" class="select__option">4TES-9</option>
+                                <option value="4TES-12" class="select__option">4TES-12</option>
+                                <option value="4VCS-6.2" class="select__option">4VCS-6.2</option>
+                                <option value="4VCS-10.2" class="select__option">4VCS-10.2</option>
+                                <option value="4VES-6" class="select__option">4VES-6</option>
+                                <option value="4VES-7" class="select__option">4VES-7</option>
+                                <option value="4VES-10" class="select__option">4VES-10</option>
+                                <option value="6F-40.2" class="select__option">6F-40.2</option>
+                                <option value="6F-50.2" class="select__option">6F-50.2</option>
+                                <option value="6FE-40" class="select__option">6FE-40</option>
+                                <option value="6FE-44" class="select__option">6FE-44</option>
+                                <option value="6FE-50" class="select__option">6FE-50</option>
+                                <option value="6G-30.2" class="select__option">6G-30.2</option>
+                                <option value="6G-40.2" class="select__option">6G-40.2</option>
+                                <option value="6GE-30" class="select__option">6GE-30</option>
+                                <option value="6GE-34" class="select__option">6GE-34</option>
+                                <option value="6GE-40" class="select__option">6GE-40</option>
+                                <option value="6H-25.2" class="select__option">6H-25.2</option>
+                                <option value="6H-35.2" class="select__option">6H-35.2</option>
+                                <option value="6HE-25" class="select__option">6HE-25</option>
+                                <option value="6HE-28" class="select__option">6HE-28</option>
+                                <option value="6HE-35" class="select__option">6HE-35</option>
+                                <option value="6J-22.2" class="select__option">6J-22.2</option>
+                                <option value="6J-33.2" class="select__option">6J-33.2</option>
+                                <option value="6JE-22" class="select__option">6JE-22</option>
+                                <option value="6JE-25" class="select__option">6JE-25</option>
+                                <option value="6JE-33" class="select__option">6JE-33</option>
+                                <option value="8FC-60.2" class="select__option">8FC-60.2</option>
+                                <option value="8FC-70.2" class="select__option">8FC-70.2</option>
+                                <option value="8FE-60" class="select__option">8FE-60</option>
+                                <option value="8FE-70" class="select__option">8FE-70</option>
+                                <option value="8GC-50.2" class="select__option">8GC-50.2</option>
+                                <option value="8GC-60.2" class="select__option">8GC-60.2</option>
+                                <option value="8GE-50" class="select__option">8GE-50</option>
+                                <option value="8GE-60" class="select__option">8GE-60</option>
+
+                            </select>
+
+                        </div>
+
+                    </section>
+
+                </form>
+
+            </section>
+
+        </div>
+
+    </main>
+
+    <footer class="rodape">
+
+        <div class="lds-dual-ring" id="loading"></div>
+
+        <section class="rodape__conteudo" id="returned__vee">
+
+            <div class="result" id="result__vee">
+
+                <img id="valvulaEPVImg" class="result__img" src="/docs/vee-nobg.png" alt="">
+                <img id="valvulaESVImg" class="result__img" src="/docs/esv-nobg.png" alt="">
+
+                <div class="result__coluna">
+
+                    <h3 class="result__titulo">Tipo</h3>
+                    <span class="result__text" id="tipo"></span>
+
+                </div>
+
+                <div class="result__coluna">
+
+                    <h3 class="result__titulo" id="tipoValvula"></h3>
+                    <span class="result__text" id="modelo"></span>
+
+                </div>
+
+                <div class="result__coluna">
+
+                    <h3 class="result__titulo">Código</h3>
+                    <span class="result__text" id="codigo"></span>
+
+                </div>
+
+                <div class="result__coluna">
+
+                    <h3 class="result__titulo">Capacidade Máxima da Valvula</h3>
+                    <span class="result__text" id="capacidadeValvula"></span>
+
+                </div>
+
+                <div class="result__coluna">
+
+                    <h3 class="result__titulo">Uso</h3>
+                    <span class="result__text" id="uso"></span>
+
+                </div>
+
+                <div class="result__coluna">
+
+                    <h3 class="result__titulo">kV Total</h3>
+                    <span class="result__text" id="kV"></span>
+
+                </div>
+
+                <div class="result__coluna">
+
+                    <h3 class="result__titulo">Entrada</h3>
+                    <span class="result__text" id="entrada"></span>
+
+                </div>
+
+                <div class="result__coluna">
+
+                    <h3 class="result__titulo">Saída</h3>
+                    <span class="result__text" id="saida"></span>
+
+                </div>
+
+            </div>
+
+            <div class="result__error" id="result__vee__error">
+                <span id="error__message" style="border: none;">Valores inconsistentes na tEvap</span>
+            </div>
+
+        </section>
+
+        <section class="rodape__conteudo" id="returned__oil">
+
+            <div class="result" id="result__oil">
+
+                <img class="result__img" src="/docs/Oil-Pack-1.38-1-2048x2048-removebg-preview.png" alt="">
+
+                <div class="result__coluna__tanque" id="quantidade">
+                    <strong>
+                        <h3>Quantidade</h3>
+                    </strong>
+                    <p>1</p>
+                </div>
+
+                <div class="result__coluna__tanque" id="codigo">
+                    <strong>
+                        <h3>Código</h3>
+                    </strong>
+                    <p></p>
+                </div>
+
+                <div class="result__coluna__tanque" id="modelo">
+                    <strong>
+                        <h3>Modelo</h3>
+                    </strong>
+                    <p></p>
+                </div>
+
+                <!--<div class="result__coluna__tanque" id="altura">
+                    <strong>
+                        <h3>Altura<br>(mm)</h3>
+                    </strong>
+                    <p></p>
+                </div>
+                
+                <div class="result__coluna__tanque" id="diametro">
+                    <strong>
+                        <h3>Diâmetro<br>(mm)</h3>
+                    </strong>
+                    <p></p>
+                </div>-->
+
+                <div class="result__coluna__tanque" id="volume">
+                    <strong>
+                        <h3>Volume<br>(L)</h3>
+                    </strong>
+                    <p></p>
+                </div>
+
+                <div class="result__coluna__tanque" id="pressao">
+                    <strong>
+                        <h3>Pressão Máxima Trab.<br>(Bar)</h3>
+                    </strong>
+                    <p>31</p>
+                </div>
+
+                <div class="result__coluna__tanque" id="tempTrab">
+                    <strong>
+                        <h3>Temperatura Trab.<br>(ºC)</h3>
+                    </strong>
+                    <p>-10 a 120</p>
+                </div>
+
+            </div>
+
+            <div class="result__error" id="result__oil__error">
+                <span id="error__message" style="border: none;"></span>
+            </div>
+
+        </section>
+
+        <section class="rodape__conteudo" id="returned__tanque">
+
+            <div class="result result_massa" id="result__tanque__massa">
+                <h3>Quantidade Calculada em Kgs do refrigerante para sistema =&nbsp;</h3>
+                <strong>
+                    <p></p>
+                </strong>
+            </div>
+
+            <div class="result" id="result__tanque">
+
+                <img class="result__img" src="../docs/tanque-removebg-preview.png" alt="">
+
+                <div class="result__coluna__tanque" id="modelo">
+                    <strong>
+                        <h3>Modelo/Código</h3>
+                    </strong>
+                    <p></p>
+                </div>
+
+                <div class="result__coluna__tanque" id="volume">
+                    <strong>
+                        <h3>Volume<br>Total (L)</h3>
+                    </strong>
+                    <p></p>
+                </div>
+
+                <div class="result__coluna__tanque" id="pmta">
+                    <strong>
+                        <h3>PMTA<br>(bar)</h3>
+                    </strong>
+                    <p>31</p>
+                </div>
+
+                <div class="result__coluna__tanque" id="entrada">
+                    <strong>
+                        <h3>Entrada<br>(pol)</h3>
+                    </strong>
+                    <p></p>
+                </div>
+
+                <div class="result__coluna__tanque" id="saida">
+                    <strong>
+                        <h3>Saída<br>(pol)</h3>
+                    </strong>
+                    <p></p>
+                </div>
+
+                <div class="result__coluna__tanque" id="altura">
+                    <strong>
+                        <h3>Altura<br>(mm)</h3>
+                    </strong>
+                    <p></p>
+                </div>
+
+                <div class="result__coluna__tanque" id="diametro">
+                    <strong>
+                        <h3>Diâmetro<br>(mm)</h3>
+                    </strong>
+                    <p></p>
+                </div>
+
+                <div class="result__coluna__tanque" id="visores">
+                    <strong>
+                        <h3>Visores<br>de líquido</h3>
+                    </strong>
+                    <p>3</p>
+                </div>
+
+                <div class="result__coluna__tanque" id="valvSec">
+                    <strong>
+                        <h3>Válvula<br>de Segurança<br>(bar)</h3>
+                    </strong>
+                    <p>28</p>
+                </div>
+
+                <div class="result__coluna__tanque" id="valvServ">
+                    <strong>
+                        <h3>Válvula<br>de Serviço<br>(pol SAE)</h3>
+                    </strong>
+                    <p>3/8"</p>
+                </div>
+
+                <div class="result__coluna__tanque" id="norma">
+                    <strong>
+                        <h3>Norma</h3>
+                    </strong>
+                    <a class="botoes__botao botao__norma" id="botao-norma" href="../docs/certificacaoNR13.9f0a0b9c.pdf"
+                        target="_blank">NR-13</a>
+                </div>
+
+            </div>
+
+            <strong>
+                <p id="result__info">*Este tanque de liquido pode ser utilizado na horizontal.</p>
+            </strong>
+
+            <div class="result__error" id="result__tanque__error">
+                <span id="error__message" style="border: none;"></span>
+            </div>
+
+            <div class="result__tanque__info" id="result__tanque__info">
+                <p>1 - Dimensionamento do tanque de líquido, atendendo a norma ABNT NBR 16.069 "Segurança em Sistemas de
+                    Refrigeração", considera máximo recolhimento do líquido refrigerante em 80% do volume TOTAL do
+                    tanque.</p>
+                <p>2 - PMTA - Pressão Máxima de Trabalho Admissível</p>
+            </div>
+
+        </section>
+
+        <section class="rodape__conteudo" id="returned__ventilador">
+
+            <div class="result" id="result__ventilador">
+
+                <img class="result__img" src="../docs/Ventilador_Image-removebg-preview.png" alt="">
+
+                <div class="result__coluna">
+
+                    <h3 class="result__titulo">Modelo</h3>
+                    <span class="result__text" id="modelo"></span>
+
+                </div>
+
+                <div class="result__coluna">
+
+                    <h3 class="result__titulo">Código</h3>
+                    <span class="result__text" id="codigo"></span>
+
+                </div>
+
+                <div class="result__coluna">
+
+                    <h3 class="result__titulo">Tamanho</h3>
+                    <span class="result__text" id="tamanho"></span>
+
+                </div>
+
+                <div class="result__coluna">
+
+                    <h3 class="result__titulo">RPM</h3>
+                    <span class="result__text" id="rpm"></span>
+
+                </div>
+
+                <div class="result__coluna">
+
+                    <h3 class="result__titulo">Nº de Fases</h3>
+                    <span class="result__text" id="nFases"></span>
+
+                </div>
+
+                <div class="result__coluna">
+
+                    <h3 class="result__titulo">Tensão</h3>
+                    <span class="result__text" id="tensao"></span>
+
+                </div>
+
+                <div class="result__coluna">
+
+                    <h3 class="result__titulo">Frequência</h3>
+                    <span class="result__text" id="frequencia"></span>
+
+                </div>
+
+            </div>
+
+            <div class="result__error" id="result__ventilador__error">
+                <span id="error__message" style="border: none;"></span>
+            </div>
+
+        </section>
+
+        <section class="rodape__conteudo" id="returned__regulador">
+
+            <div class="result" id="result__regulador-re2">
+
+                <img class="result__img" src="../docs/re2_image-removebg-preview.png" alt="">
+
+                <div class="result__coluna" style="padding: 0px 20px;">
+
+                    <h3 class="result__titulo">Nome</h3>
+                    <span class="result__text" id="nome"></span>
+
+                </div>
+
+                <div class="result__coluna">
+
+                    <h3 class="result__titulo">Código</h3>
+                    <span class="result__text" id="codigo"></span>
+
+                </div>
+
+                <div class="result__coluna">
+
+                    <h3 class="result__titulo">Adaptador</h3>
+                    <span class="result__text" id="adaptador"></span>
+
+                </div>
+
+                <div class="result__coluna">
+
+                    <h3 class="result__titulo">Código</h3>
+                    <span class="result__text" id="codigo__regulador"></span>
+
+                </div>
+
+                <div class="result__coluna">
+
+                    <h3 class="result__titulo">Pressão Máxima de Trabalho</h3>
+                    <span class="result__text" id="pmt"></span>
+
+                </div>
+
+                <div class="result__coluna">
+
+                    <h3 class="result__titulo">IP</h3>
+                    <span class="result__text" id="ip"></span>
+
+                </div>
+
+                <div class="result__coluna">
+
+                    <h3 class="result__titulo">Tensão</h3>
+                    <span class="result__text" id="tensao"></span>
+
+                </div>
+
+            </div>
+
+            <div class="result" id="result__regulador-reb3">
+
+                <img class="result__img" src="../docs/reb3_image-removebg-preview.png" alt="">
+
+                <div class="result__coluna">
+
+                    <h3 class="result__titulo">Nome</h3>
+                    <span class="result__text" id="nome"></span>
+
+                </div>
+
+                <div class="result__coluna">
+
+                    <h3 class="result__titulo">Código</h3>
+                    <span class="result__text" id="codigo"></span>
+
+                </div>
+
+                <div class="result__coluna">
+
+                    <h3 class="result__titulo">Adaptador</h3>
+                    <span class="result__text" id="adaptador"></span>
+
+                </div>
+
+                <div class="result__coluna">
+
+                    <h3 class="result__titulo">Código</h3>
+                    <span class="result__text" id="codigo__regulador"></span>
+
+                </div>
+
+                <div class="result__coluna">
+
+                    <h3 class="result__titulo">Pressão Máxima de Trabalho</h3>
+                    <span class="result__text" id="pmt"></span>
+
+                </div>
+
+                <div class="result__coluna">
+
+                    <h3 class="result__titulo">IP</h3>
+                    <span class="result__text" id="ip"></span>
+
+                </div>
+
+                <div class="result__coluna">
+
+                    <h3 class="result__titulo">Tensão</h3>
+                    <span class="result__text" id="tensao"></span>
+
+                </div>
+
+            </div>
+            
+            <strong>
+                <p id="result__info">*O adaptador deve ser solicitado e adquirido separadamente.</p>
+            </strong>
+
+            <div class="result__error" id="result__regulador__error">
+                <span id="error__message" style="border: none;"></span>
+            </div>
+
+        </section>
+
+    </footer>
+
+    <div class="circuito__section">
+
+        <div class="circuito__conteudo">
+
+            <div class="circuito__conteudo__header">
+
+                <h2 class="circuito__header__titulo">Circuito</h2>
+                <button class="circuito__header__button">x</button>
+
+            </div>
+
+            <div class="circuito__conteudo__linha"></div>
+
+            <div class="circuito__conteudo__imagem">
+
+                <span class="imagem__titulo__cond">Condensador</span>
+                <span class="imagem__titulo__tanque">Tanque<br>de<br>Líquido</span>
+                <span class="imagem__titulo__filtro">Filtro</span>
+                <span class="imagem__titulo__visor">Visor</span>
+                <span class="imagem__titulo__solenoide">Válvula <br> Solenoide</span>
+                <span class="imagem__titulo__vee">VEE</span>
+                <span class="imagem__titulo__evap">Evaporador</span>
+                <span class="imagem__titulo__compressor">Compressor</span>
+
+                <span class="imagem__conteudo__tCond"></span>
+                <span class="imagem__conteudo__sub"></span>
+                <span class="imagem__conteudo__super"></span>
+                <span class="imagem__conteudo__tEvap"></span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="/js/frontend/selecionaMenu.js"></script>
+    <script src="/js/frontend/confereEntradas.js"></script>
+    <!--<script src="/js/frontend/formularioVeeSubmit.js"></script>-->
+    <script src="/js/frontend/formularioOilSubmit.js"></script>
+    <script src="/js/frontend/formularioVentSubmit.js"></script>
+    <script src="/js/frontend/formularioVeeSubmit2.js"></script>
+    <script src="/js/frontend/formularioTanqueSubmit.js"></script>
+    <script src="/js/frontend/formularioReguladorSubmit.js"></script>
+
+</body>
+
+</html>
